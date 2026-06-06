@@ -6,6 +6,7 @@ qdrant-client
 fastapi
 uvicorn
 pypdf 
+pymupdf
 python-dotenv
 langchain-huggingface
 qdrant-client
