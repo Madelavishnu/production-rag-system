@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Code Notebook</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2317205479487452"
+     crossorigin="anonymous"></script>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    padding: 20px;
+}
+
+.cell {
+    background: white;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+h3 {
+    margin-top: 0;
+}
+
+pre {
+    background: #1e1e1e;
+    color: #dcdcdc;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+button:hover {
+    background: #0056b3;
+}
+</style>
+</head>
+
+<body>
+
+<h1>📘 My Programming Notebook</h1>
+
+
+
+<div class="cell">
+<h3>1️⃣ Display all command line arguments (Shell)</h3>
+<button onclick="copyCode('code1')">Copy Code</button>
+<pre id="code1">
+
+#!/bin/bash
+
+echo " my name is "$1
+echo " my age  "$2
+echo " my class is "$3
+echo " total arguments is "$#
+echo " all arguments "$@
+
+</pre>
+</div>
+
+<div class="cell">
+<h3>2️⃣ Check Leap Year (If no argument → current year)</h3>
+<button onclick="copyCode('code2')">Copy Code</button>
+<pre id="code2">
+
+echo "enter year"
+read year
+
+if [ $((year % 4)) -eq 0 ]
+then
+    echo "leap year:$year"
+
+else
+
+    echo "not leap year:$year"
+
+fi
+
+
+</pre>
+</div>
+
+
+<div class="cell">
+<h3>3️⃣ Reverse a Number</h3>
+<button onclick="copyCode('code3')">Copy Code</button>
+<pre id="code3">
+
+#!/bin/bash
+
+echo "Enter a number:"
+read num
+
+rev=0
+
+while [ $num -gt 0 ]
+do
+    rem=$((num % 10))
+    rev=$((rev * 10 + rem))
+    num=$((num / 10))
+done
+
+echo "Reversed number is: $rev"
+
+
+</pre>
+</div>
+
+<div class="cell">
+<h3>4 - FIRST 25 FIBONACCI NUMBERS </h3>
+<button onclick="copyCode('code4')">Copy Code</button>
+<pre id="code4">
+#!/bin/bash
+
+a=0
+b=1
+
+echo "First 25 Fibonacci numbers:"
+
+for ((i=1; i<=25; i++))
+do
+    echo -n "$a "
+    fn=$((a + b))
+    a=$b
+    b=$fn
+done
+
+echo
+
+    
+</pre>
+</div>
+
+
+<div class="cell">
+<h3>5️⃣ Prime Numbers in a Range</h3>
+<button onclick="copyCode('code5')">Copy Code</button>
+<pre id="code5">
+#!/bin/bash
+
+echo "Enter start:"
+read start
+echo "Enter end:"
+read end
+
+for ((num=$start; num<=$end; num++))
+do
+    flag=0
+    for ((i=2; i<=num/2; i++))
+    do
+        if ((num % i == 0))
+        then
+            flag=1
+            break
+        fi
+    done
+
+    if ((flag == 0 && num > 1))
+    then
+        echo $num
+    fi
+done
+
+
+</pre>
+</div>
+
+
+
+
+<div class="cell">
+<h3>6️⃣ First 50 Prime Numbers</h3>
+<button onclick="copyCode('code6')">Copy Code</button>
+<pre id="code6">
+#!/bin/bash
+
+count=0
+num=2
+
+while [ $count -lt 50 ]
+do
+    isprime=0
+
+    for ((i=2; i<=num/2; i++))
+    do
+        if (( num % i == 0 ))
+        then
+            isprime=1
+            break
+        fi
+    done
+
+    if (( isprime == 0 ))
+    then
+        echo -n "$num "
+        ((count++))
+    fi
+
+    ((num++))
+done
+
+echo
+
+
+</pre>
+</div>
+
+
+<div class="cell">
+<h3>7️⃣ Arithmetic Operations</h3>
+<button onclick="copyCode('code7')">Copy Code</button>
+<pre id="code7">
+
+#!/bin/bash
+
+echo "Enter first number:"
+read a
+echo "Enter second number:"
+read b
+
+echo "Addition: $((a + b))"
+echo "Subtraction: $((a - b))"
+echo "Multiplication: $((a * b))"
+echo "Division: $((a / b))"
+
+</pre>
+</div>
+
+<div class="cell">
+<h3>8️⃣ C Program – Orphan Process</h3>
+<button onclick="copyCode('code8')">Copy Code</button>
+<pre id="code8">
+
+#include<stdio.h> 
+#include<unistd.h> 
+#include<sys/types.h>
+
+int main()
+{
+    pid_t pid = fork();
+
+    if (pid < 0)
+    {
+        printf("Fork failed\n");
+        
+    }
+    if (pid > 0)
+    {
+        printf("Parent process exiting...\n",pid);
+       
+    } 
+    else if (pid == 0)
+    {
+        
+        printf("Child process. Parent PID: %d\n");
+    }
+
+    return 0;
+}
+
+
+
+
+</pre>
+</div>
+
+<div class="cell">
+<h3>9️⃣ C Program – Avoid Zombie using wait()</h3>
+<button onclick="copyCode('code9')">Copy Code</button>
+<pre id="code9">
+
+#include <stdio.h>      // printf
+#include <stdlib.h>     // exit
+#include <unistd.h>     // fork, getpid
+#include <sys/types.h>  // pid_t
+#include <sys/wait.h>   // wait, WEXITSTATUS
+
+int main()
+{
+    pid_t pid;
+    int status;
+
+    pid = fork();
+
+    if (pid < 0) {
+        printf("Fork failed\n");
+        exit(1);
+    }
+
+    if (pid > 0) {
+        // Parent process
+        printf("I'm parent with PID %d\n", getpid());
+        wait(&status);   // Parent waits for child
+        printf("Child terminated with status %d\n", WEXITSTATUS(status));
+    }
+    else {
+        // Child process
+        printf("I'm child with PID %d\n", getpid());
+        exit(2);
+    }
+
+    return 0;
+}
+
+
+</pre>
+</div>
+
+<!--
+<div class="cell">
+<h3>10 - INTERVAL ESTIMATION</h3>
+<button onclick="copyCode('code10')">Copy Code</button>
+<pre id="code10">
+
+# b) Interval Estimation
+
+data <- c(12, 15, 18, 20, 22, 16, 14, 21, 17)
+
+sample_mean <- mean(data)
+sample_sd <- sd(data)
+sample_size <- length(data)
+
+confidence_level <- 0.95
+alpha <- 1 - confidence_level
+
+t_critical <- qt(1 - alpha/2, df = sample_size - 1)
+cat("t critical value:", t_critical, "\n")
+
+standard_error <- sample_sd / sqrt(sample_size)
+
+margin_of_error <- t_critical * standard_error
+cat("Margin of error:", margin_of_error, "\n")
+
+lower_bound <- sample_mean - margin_of_error
+upper_bound <- sample_mean + margin_of_error
+
+cat("Standard error:", standard_error, "\n")
+cat("Sample mean:", sample_mean, "\n")
+cat("Standard deviation:", sample_sd, "\n")
+cat("Sample size:", sample_size, "\n")
+
+cat("95% Confidence Interval of the sample mean is:",
+    lower_bound, "to", upper_bound, "\n")
+</pre>
+</div>
+
+
+
+<div class="cell">
+<h3>7 - WATER JUG PROBLEM</h3>
+<button onclick="copyCode('code13')">Copy Code</button>
+<pre id="code13">
+
+def pour_water(jugA,jugB):
+
+    max1,max2,fill=3,4,2
+    print(f"{jugB} \t {jugB}")
+    if jugB == fill:
+        return
+    elif jugB == max2:
+        pour_water(0,jugA)
+    elif jugA !=0 and jugB == 0:
+        pour_water(0,jugA)
+    elif jugA == fill:
+        pour_water(jugA,0)
+    elif jugA < max1:
+        pour_water(max1,jugB)
+    elif jugA <(max2-jugB):
+        pour_water(jugA-(max2-jugB),(max2-jugB) + jugB)
+
+    else:
+        pour_water(jugA-(max2-jugB) , (max2-jugB) +jugB)
+print("jugA \t jugB")
+pour_water(0,0)
+</pre>
+</div>
+
+<div class="cell">
+<h3>8 - DFS</h3>
+<button onclick="copyCode('code14')">Copy Code</button>
+<pre id="code14">
+graph = {
+    'A': ['B', 'D'],
+    'B': ['A', 'C'],
+    'C': ['B'],
+    'D': ['A','E','F'],
+    'E': ['D', 'F', 'G'],
+    'F': ['D', 'E','H'],
+    'G': ['E','H'],
+    'H' :['F','G']
+}
+
+def dfs(graph, start, end):
+    visited = set()
+    stack = [(start, [start])]  # (current_node, path)
+
+    print("The way to visit:")
+
+    while stack:
+        node, path = stack.pop()
+
+        if node == end:
+            print(" -> ".join(path))
+            return   
+
+        if node not in visited:
+            visited.add(node)
+
+            for neighbor in reversed(graph[node]):
+                if neighbor not in visited:   
+                    stack.append((neighbor, path + [neighbor]))
+
+    print("No path found")
+
+dfs(graph,'A','G')
+
+</pre>
+</div>
+
+<div class="cell">
+<h3>9 - BEST FIRST SEARCH</h3>
+<button onclick="copyCode('code15')">Copy Code</button>
+<pre id="code15">
+  from queue import PriorityQueue
+
+graph = {
+    'S':['A','B'],
+    'A': ['C', 'D'],
+    'B': ['E'],
+    'C': [],
+    'D': [],
+    'E': ['G'],
+    'G': []
+    
+}
+
+
+heuristic = {
+
+
+    'S' :6,
+    'A' :3,
+    'B':4,
+    'C':2,
+    'D':1,
+    'E':3,
+    'G':0
+}
+
+def best_first_search(graph, heuristic, start, goal):
+    visited = set()
+    pq = PriorityQueue()
+
+    # (heuristic_value, node, path)
+    pq.put((heuristic[start], start, [start]))
+
+    print("Best First Search Path:")
+
+    while not pq.empty():
+        h, node, path = pq.get()
+
+        if node == goal:
+            print(" -> ".join(path))
+            return
+
+        if node not in visited:
+            visited.add(node)
+
+            for neighbor in graph[node]:
+                if neighbor not in visited:
+                    pq.put((heuristic[neighbor], neighbor, path + [neighbor]))
+
+    print("No path found")
+best_first_search(graph,heuristic,'S','G')
+
+</pre>
+</div>
+
+<div class="cell">
+<h3>10 - HILL CLIMBING  ( 🗝️ you need to install numpy in your system)</h3>
+<button onclick="copyCode('code16')">Copy Code</button>
+<pre id="code16">
+import random
+import numpy as np
+
+np.random.seed(42)
+
+def f(x):
+    return -(x - 10)** 100+2
+
+def hill_climbing():
+    current = np.random.randint(1,20)
+    print("starting :", current)
+
+    while True:
+        neighbor = [current-1, current +1]
+
+        next_node = max(neighbor, key = f)
+
+        if f(next_node)<= f(current):
+            print("reached peak")
+            return current, f(current)
+
+        current = next_node
+        print("moving to :",current)
+
+best_x, best_value=hill_climbing()
+print("best_x:",best_x)
+print("best_value:",best_value)
+    
+</pre>
+</div>
+
+-->
+<script>
+function copyCode(id) {
+    const text = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(text);
+    alert("Code copied!");
+}
+</script>
+
+</body>
+</html>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GNFL3SYWT8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GNFL3SYWT8');
+</script>

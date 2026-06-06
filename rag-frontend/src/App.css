@@ -1,0 +1,471 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #020617;
+  color: white;
+  font-family: Inter, Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ======================
+   SIDEBAR
+====================== */
+
+.sidebar {
+  width: 320px;
+  background: #081028;
+  border-right: 1px solid #1e293b;
+  padding: 25px;
+  overflow-y: auto;
+}
+
+.sidebar h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.sidebar p {
+  color: #94a3b8;
+  margin-bottom: 25px;
+}
+
+.pdf-panel {
+  background: #111c36;
+  border: 1px solid #23304f;
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.pdf-panel h3 {
+  margin-bottom: 15px;
+}
+
+.pdf-card {
+  background: #17233f;
+  border: 1px solid #2d3f66;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 10px;
+  transition: 0.3s;
+}
+
+.pdf-card:hover {
+  transform: translateY(-2px);
+  background: #1c2d4f;
+}
+
+.pdf-name {
+  font-size: 14px;
+}
+
+.upload-section {
+  margin-top: 20px;
+}
+
+.upload-section input {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.upload-section button {
+  width: 100%;
+}
+
+.clear-btn {
+  background: #dc2626;
+  margin-top: 15px;
+}
+
+.clear-btn:hover {
+  background: #b91c1c;
+}
+
+/* ======================
+   MAIN CONTENT
+====================== */
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ======================
+   HEADER
+====================== */
+
+.header {
+  padding: 25px;
+  text-align: center;
+  border-bottom: 1px solid #1e293b;
+  background: #071124;
+}
+
+.header h1 {
+  font-size: 42px;
+  font-weight: bold;
+  background: linear-gradient(
+    90deg,
+    #60a5fa,
+    #8b5cf6
+  );
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.header p {
+  margin-top: 10px;
+  color: #94a3b8;
+}
+
+/* ======================
+   STATS
+====================== */
+
+.stats {
+  display: flex;
+  gap: 15px;
+  padding: 20px;
+  border-bottom: 1px solid #1e293b;
+}
+
+.stat-card {
+  flex: 1;
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  padding: 15px;
+}
+
+.stat-card h4 {
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.stat-card p {
+  margin-top: 8px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* ======================
+   CHAT
+====================== */
+
+.chat-box {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  background: #030b1c;
+}
+
+.message {
+  max-width: 75%;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 16px;
+  line-height: 1.6;
+}
+
+.user {
+  margin-left: auto;
+  background: #2563eb;
+}
+
+.bot {
+  background: #111827;
+  border: 1px solid #1f2937;
+}
+
+/* ======================
+   SOURCES
+====================== */
+
+.sources {
+  margin-top: 15px;
+}
+
+.sources h4 {
+  margin-bottom: 10px;
+}
+
+.source-box {
+  background: #0f172a;
+  border: 1px solid #334155;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.source-title {
+  color: #60a5fa;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+/* ======================
+   INPUT
+====================== */
+
+.input-section {
+  display: flex;
+  gap: 10px;
+  padding: 20px;
+  border-top: 1px solid #1e293b;
+  background: #071124;
+}
+
+.input-section input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 15px;
+  border-radius: 12px;
+  background: #111827;
+  color: white;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  background: #2563eb;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+/* ======================
+   LOADING
+====================== */
+
+.loading {
+  color: #60a5fa;
+  padding: 10px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* ======================
+   MOBILE
+====================== */
+
+@media (max-width: 768px) {
+
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #1e293b;
+  }
+
+  .stats {
+    flex-direction: column;
+  }
+
+  .message {
+    max-width: 95%;
+  }
+
+  .header h1 {
+    font-size: 30px;
+  }
+}
+
+.pdf-card{
+  background:#1e293b;
+  padding:12px;
+  border-radius:12px;
+  margin-bottom:12px;
+  border:1px solid #334155;
+  transition:0.3s;
+}
+
+.pdf-card:hover{
+  transform:translateY(-2px);
+  border-color:#3b82f6;
+}
+
+.pdf-name{
+  color:white;
+  font-weight:500;
+}
+
+.welcome-screen{
+  text-align:center;
+  padding:60px 20px;
+}
+
+.welcome-screen h2{
+  font-size:32px;
+  margin-bottom:10px;
+}
+
+.welcome-screen p{
+  color:#94a3b8;
+  margin-bottom:30px;
+}
+
+.welcome-features{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:15px;
+}
+
+.feature-card{
+  background:#1e293b;
+  padding:20px;
+  border-radius:12px;
+  border:1px solid #334155;
+}
+
+.source-toggle{
+  margin-top:10px;
+  background:#1e293b;
+  border:1px solid #334155;
+  width:100%;
+}
+
+.source-toggle:hover{
+  background:#334155;
+}
+
+.response-time{
+  margin-top:8px;
+  font-size:12px;
+  color:#60a5fa;
+}
+
+.export-btn{
+  margin-top:10px;
+  width:100%;
+  background:#059669;
+}
+
+.export-btn:hover{
+  background:#047857;
+}
+
+.pdf-btn{
+  width:100%;
+  margin-top:10px;
+  background:#7c3aed;
+}
+
+.pdf-btn:hover{
+  background:#6d28d9;
+}
+
+@media (max-width: 1024px){
+
+  .container{
+    flex-direction:column;
+  }
+
+  .sidebar{
+    width:auto;
+    border-right:none;
+    border-bottom:1px solid #334155;
+  }
+
+}
+
+@media (max-width: 768px){
+
+  .container{
+    flex-direction:column;
+    height:auto;
+  }
+
+  .sidebar{
+    width:auto;
+    padding:15px;
+    border-right:none;
+    border-bottom:1px solid #334155;
+  }
+
+  .main-content{
+    width:100%;
+  }
+
+  .chat-box{
+    height:60vh;
+  }
+
+  .input-section{
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .input-section button{
+    width:100%;
+    margin-left:0;
+  }
+
+  .message{
+    max-width:90%;
+  }
+
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media (max-width: 480px){
+
+  .header h1{
+    font-size:24px;
+  }
+
+  .welcome-screen h2{
+    font-size:24px;
+  }
+
+  .pdf-card{
+    font-size:14px;
+  }
+
+  .source-box{
+    font-size:12px;
+  }
+
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:
+    repeat(auto-fit,minmax(180px,1fr));
+
+  gap:15px;
+  margin-bottom:20px;
+}
+
+.stat-card{
+  background:#1e293b;
+  padding:20px;
+  border-radius:12px;
+  border:1px solid #334155;
+}

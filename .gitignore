@@ -1,0 +1,28 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Environment Variables
+.env
+
+# Vector Database
+faiss_db/
+data/
+
+# Frontend
+node_modules/
+dist/
+build/
+
+# React/Vite
+rag-frontend/node_modules/
+rag-frontend/dist/
+
+# VS Code
+.vscode/
+
+# OS Files
+.DS_Store
+Thumbs.db

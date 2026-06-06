@@ -1,0 +1,12 @@
+langchain
+langchain-community
+langchain-core
+sentence-transformers
+qdrant-client
+fastapi-uvicorn
+pypdf 
+python-dotenv
+langchain-huggingface
+qdrant-client
+streamlit
+rank-bm25
