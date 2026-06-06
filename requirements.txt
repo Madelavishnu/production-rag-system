@@ -3,7 +3,8 @@ langchain-community
 langchain-core
 sentence-transformers
 qdrant-client
-fastapi-uvicorn
+fastapi
+uvicorn
 pypdf 
 python-dotenv
 langchain-huggingface
