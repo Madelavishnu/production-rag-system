@@ -17,6 +17,7 @@ function App() {
   const [expandedSource, setExpandedSource] =
   useState(null);
   const [darkMode, setDarkMode] = useState(true);
+  const [showSidebar, setShowSidebar] = useState(false);
 
 
   useEffect(() => {
@@ -266,7 +267,18 @@ useEffect(() => {
 
     {/* Sidebar */}
 
-    <div className="sidebar">
+    <button
+      className="close-sidebar"
+      onClick={() => setShowSidebar(false)}
+    >
+      ✕
+    </button>
+
+    <div
+      className={`sidebar ${
+        showSidebar ? "sidebar-open" : ""
+      }`}
+    >
 
       <div>
 
@@ -372,6 +384,12 @@ useEffect(() => {
     {/* Main Content */}
 
     <div className="main-content">
+      <button
+        className="mobile-menu-btn"
+        onClick={() => setShowSidebar(true)}
+      >
+        ☰
+      </button>
 
       <div className="header">
         <h1>🚀 Production RAG System</h1>
