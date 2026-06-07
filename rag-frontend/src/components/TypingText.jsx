@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
 
-function TypingText({ text, speed = 25 }) {
-
+function TypingText({ text = "", speed = 25 }) {
   const [displayedText, setDisplayedText] =
     useState("");
 
   useEffect(() => {
+
+    // Prevent crash if text is undefined/null
+    if (!text) {
+      setDisplayedText("");
+      return;
+    }
 
     let index = 0;
 

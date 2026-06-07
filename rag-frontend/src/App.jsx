@@ -16,6 +16,8 @@ function App() {
   const chatEndRef = useRef(null);
   const [expandedSource, setExpandedSource] =
   useState(null);
+  const [darkMode, setDarkMode] = useState(true);
+
 
   useEffect(() => {
   loadStatus();
@@ -260,242 +262,305 @@ useEffect(() => {
   };
 
   return (
-    <div className="container">
+  <div className={darkMode ? "container dark" : "container"}>
 
-      {/* Sidebar */}
+    {/* Sidebar */}
 
-      <div className="sidebar">
+    <div className="sidebar">
 
-          <h2>📚 PDFs</h2>
+      <div>
 
-          <p>
-            Total Messages: {messages.length}
-          </p>
+        <div className="logo-section">
+          <h1>🤖</h1>
+          <h2>RAG Assistant</h2>
+        </div>
 
-          {pdfs.map((pdf, index) => (
-            <div
-              key={index}
-              className="pdf-card"
-            >
-              <div className="pdf-name">
-                📄 {pdf}
-              </div>
+        <div className="sidebar-stats">
+
+          <div className="mini-stat">
+            <span>📄 Docs</span>
+            <strong>{pdfCount}</strong>
+          </div>
+
+          <div className="mini-stat">
+            <span>💬 Messages</span>
+            <strong>{messages.length}</strong>
+          </div>
+
+        </div>
+
+        <h3 className="pdf-title">
+          📚 Uploaded PDFs
+        </h3>
+
+        {pdfs.map((pdf, index) => (
+          <div
+            key={index}
+            className="pdf-card"
+          >
+            <div className="pdf-name">
+              📄 {pdf}
             </div>
-          ))}
+          </div>
+        ))}
 
-          <input
-            className="file-input"
-            type="file"
-            accept=".pdf"
-            onChange={(e) => setPdf(e.target.files[0])}
-          />
+        <div className="upload-section">
+
+          <div className="upload-box">
+
+              <p>📄 Drag & Drop PDF</p>
+
+              <input
+                    className="file-input"
+                    type="file"
+                    accept=".pdf"
+                    onChange={(e) =>
+                      setPdf(e.target.files[0])
+                    }
+                  />
+
+                </div>
 
           <button
+            className="upload-btn"
             onClick={uploadPDF}
             disabled={loading}
           >
             {loading
               ? "Uploading..."
-              : "Upload PDF"}
-          </button>
-
-          <hr />
-
-          <button
-            className="clear-btn"
-            onClick={clearDatabase}
-          >
-            🗑 Clear Database
-          </button>
-
-          <button
-            className="export-btn"
-            onClick={exportChat}
-          >
-            📥 Export Chat
-          </button>
-
-          <button
-            className="pdf-btn"
-            onClick={exportPDF}
-          >
-            📄 Export PDF
-          </button>
-
-        </div>
-
-      {/* Main Content */}
-
-      <div className="main-content">
-
-        <div className="header">
-  <h1>Production RAG System</h1>
-  <p>
-    Upload PDFs and ask intelligent questions
-  </p>
-</div>
-
-<div className="stats">
-
-  <div className="stat-card">
-    <h4>Documents Loaded</h4>
-    <p>{pdfCount}</p>
-  </div>
-
-  <div className="stat-card">
-    <h4>Messages</h4>
-    <p>{messages.length}</p>
-  </div>
-
-  <div className="stat-card">
-    <h4>Status</h4>
-    <p>
-      {pdfCount > 0
-        ? "Ready"
-        : "No PDFs"}
-    </p>
-  </div>
-
-</div>
-
-        {/* Chat */}
-
-        <div className="chat-box">
-          {messages.length === 0 && !loading && (
-            <div className="welcome-screen">
-
-              <h2>🤖 Production RAG System</h2>
-
-              <p>
-                Upload PDFs and ask intelligent questions.
-              </p>
-
-              <div className="welcome-features">
-
-                <div className="feature-card">
-                  📄 Multiple PDF Support
-                </div>
-
-                <div className="feature-card">
-                  🔍 Semantic Search
-                </div>
-
-                <div className="feature-card">
-                  🧠 AI Powered Answers
-                </div>
-
-                <div className="feature-card">
-                  ⚡ Fast Retrieval
-                </div>
-
-              </div>
-
-                </div>
-              )}
-
-          {messages.map((msg, index) => (
-            <div
-              key={msg.id}
-              className={
-                msg.type === "user"
-                  ? "message user"
-                  : "message bot"
-              }
-            >
-              {
-                msg.type === "bot"
-                  ? <TypingText text={msg.text} />
-                  : <p>{msg.text}</p>
-              }
-
-              <div className="message-time">
-                {msg.time}
-              </div>
-
-
-              {msg.responseTime && (
-                <div className="response-time">
-                  ⚡ {msg.responseTime}s
-                </div>
-              )}
-
-              {msg.sources && (
-                <div className="sources">
-
-                  <button
-                    className="source-toggle"
-                    onClick={() =>
-                      setExpandedSource(
-                        expandedSource === index
-                          ? null
-                          : index
-                      )
-                    }
-                  >
-                    📚 Sources ({msg.sources.length})
-                  </button>
-
-                  {expandedSource === index &&
-                    msg.sources.map((source, i) => (
-                      <div
-                        key={i}
-                        className="source-box"
-                      >
-                        <div>
-                          <strong>Score:</strong>{" "}
-                          {msg.scores?.[i]?.toFixed(3)}
-                        </div>
-
-                        <hr />
-
-                        {typeof source === "object"
-                          ? source.content
-                          : source}
-                      </div>
-                    ))}
-                </div>
-              )}
-            </div>
-          ))}
-
-          {loading && (
-            <div className="message bot">
-              ⏳ AI is thinking...
-            </div>
-          )}
-          <div ref={chatEndRef}></div>
-
-        </div>
-
-        {/* Input */}
-
-        <div className="input-section">
-
-          <input
-            type="text"
-            placeholder="Ask question from PDF..."
-            value={question}
-            onChange={(e) =>
-              setQuestion(e.target.value)
-            }
-            onKeyDown={handleKeyPress}
-          />
-
-          <button
-            onClick={askQuestion}
-            disabled={loading}
-          >
-            {loading
-              ? "Thinking..."
-              : "Send"}
+              : "📤 Upload PDF"}
           </button>
 
         </div>
 
       </div>
 
+      <div className="sidebar-bottom">
+
+        <button
+          className="export-btn"
+          onClick={exportChat}
+        >
+          📥 Export Chat
+        </button>
+
+        <button
+          className="pdf-btn"
+          onClick={exportPDF}
+        >
+          📄 Export PDF
+        </button>
+
+        <button
+          className="theme-btn"
+          onClick={() => setDarkMode(!darkMode)}
+        >
+          {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
+        </button>
+
+        <button
+          className="clear-btn"
+          onClick={clearDatabase}
+        >
+          🗑 Clear Database
+        </button>
+
+      </div>
+
     </div>
-  );
+
+    {/* Main Content */}
+
+    <div className="main-content">
+
+      <div className="header">
+        <h1>🚀 Production RAG System</h1>
+
+        <p>
+          Upload PDFs and ask intelligent questions
+        </p>
+      </div>
+
+      <div className="stats">
+
+        <div className="stat-card">
+          <h4>Documents Loaded</h4>
+          <p>{pdfCount}</p>
+        </div>
+
+        <div className="stat-card">
+          <h4>Messages</h4>
+          <p>{messages.length}</p>
+        </div>
+
+        <div className="stat-card">
+          <h4>Status</h4>
+          <p>
+            {pdfCount > 0
+              ? "Ready"
+              : "No PDFs"}
+          </p>
+        </div>
+
+      </div>
+
+      {/* Chat */}
+
+      <div className="chat-box">
+
+        {messages.length === 0 && !loading && (
+
+          <div className="welcome-screen">
+
+            <h2>
+              🤖 Production RAG System
+            </h2>
+
+            <p>
+              Upload PDFs and ask intelligent questions.
+            </p>
+
+            <div className="welcome-features">
+
+              <div className="feature-card">
+                📄 Multiple PDF Support
+              </div>
+
+              <div className="feature-card">
+                🔍 Semantic Search
+              </div>
+
+              <div className="feature-card">
+                🧠 AI Powered Answers
+              </div>
+
+              <div className="feature-card">
+                ⚡ Fast Retrieval
+              </div>
+
+            </div>
+
+          </div>
+
+        )}
+
+        {messages.map((msg, index) => (
+
+          <div
+            key={msg.id}
+            className={
+              msg.type === "user"
+                ? "message user"
+                : "message bot"
+            }
+          >
+
+            {
+              msg.type === "bot"
+                ? <TypingText text={msg.text} />
+                : <p>{msg.text}</p>
+            }
+
+            <div className="message-time">
+              {msg.time}
+            </div>
+
+            {msg.responseTime && (
+              <div className="response-time">
+                ⚡ {msg.responseTime}s
+              </div>
+            )}
+
+            {msg.sources && (
+
+              <div className="sources">
+
+                <button
+                  className="source-toggle"
+                  onClick={() =>
+                    setExpandedSource(
+                      expandedSource === index
+                        ? null
+                        : index
+                    )
+                  }
+                >
+                  📚 Sources ({msg.sources.length})
+                </button>
+
+                {expandedSource === index &&
+                  msg.sources.map((source, i) => (
+
+                    <div
+                      key={i}
+                      className="source-box"
+                    >
+
+                      <div>
+                        <strong>Score:</strong>{" "}
+                        {msg.scores?.[i]?.toFixed(3)}
+                      </div>
+
+                      <hr />
+
+                      {
+                        typeof source === "object"
+                          ? source.content
+                          : source
+                      }
+
+                    </div>
+
+                  ))
+                }
+
+              </div>
+
+            )}
+
+          </div>
+
+        ))}
+
+        {loading && (
+          <div className="message bot">
+            ⏳ AI is thinking...
+          </div>
+        )}
+
+        <div ref={chatEndRef}></div>
+
+      </div>
+
+      {/* Input */}
+
+      <div className="input-section">
+
+        <input
+          type="text"
+          placeholder="Ask question from PDF..."
+          value={question}
+          onChange={(e) =>
+            setQuestion(e.target.value)
+          }
+          onKeyDown={handleKeyPress}
+        />
+
+        <button
+          onClick={askQuestion}
+          disabled={loading}
+        >
+          {loading
+            ? "Thinking..."
+            : "Send"}
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+);
 }
 
 export default App;
