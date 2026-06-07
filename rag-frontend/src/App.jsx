@@ -61,7 +61,7 @@ useEffect(() => {
       setLoading(true);
 
       const response = await axios.post(
-        "http://127.0.0.1:8000/upload",
+        "https://production-rag-system-production-004f.up.railway.app/upload",
         formData,
         {
           headers: {
@@ -102,7 +102,7 @@ useEffect(() => {
       setLoading(true);
 
       const response = await axios.post(
-        "http://127.0.0.1:8000/ask",
+        "https://production-rag-system-production-004f.up.railway.app/ask",
         {
           question: question,
         }
