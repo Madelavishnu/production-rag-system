@@ -144,7 +144,7 @@ useEffect(() => {
   const clearDatabase = async () => {
     try {
       await axios.post(
-        "http://127.0.0.1:8000/clear"
+        "https://production-rag-system-production-004f.up.railway.app/clear"
       );
 
       setMessages([]);
