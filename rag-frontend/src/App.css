@@ -489,7 +489,10 @@ button:hover {
   flex-direction: column;
   justify-content: space-between;
 
+  overflow-y:auto;
+
   padding: 20px;
+  padding-vottom:250px;
 }
 
 .logo-section {
