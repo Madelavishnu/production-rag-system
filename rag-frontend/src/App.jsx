@@ -263,23 +263,31 @@ useEffect(() => {
     }
   };
 
-  return (
+return (
   <div className={darkMode ? "container dark" : "container"}>
 
+    {/* Mobile Overlay */}
+    {showSidebar && (
+      <div
+        className="sidebar-overlay"
+        onClick={() => setShowSidebar(false)}
+      />
+    )}
+
     {/* Sidebar */}
-
-    <button
-      className="close-sidebar"
-      onClick={() => setShowSidebar(false)}
-    >
-      ✕
-    </button>
-
     <div
       className={`sidebar ${
         showSidebar ? "sidebar-open" : ""
       }`}
     >
+
+      {/* Close Button */}
+      <button
+        className="close-sidebar"
+        onClick={() => setShowSidebar(false)}
+      >
+        ✕
+      </button>
 
       <div>
 
@@ -301,6 +309,9 @@ useEffect(() => {
           </div>
 
         </div>
+
+        {/* KEEP ALL YOUR EXISTING SIDEBAR CODE BELOW */}
+        
 
         <h3 className="pdf-title">
           📚 Uploaded PDFs
