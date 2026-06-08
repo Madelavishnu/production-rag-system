@@ -699,11 +699,11 @@ body,
     display: block;
     position: fixed;
     top: 15px;
-    left: 5px;
+    left: 15px;
     z-index: 1001;
 
-    width: 45px;
-    height: 35px;
+    width: 55px;
+    height: 55px;
 
     border: none;
     border-radius: 12px;
@@ -809,6 +809,14 @@ body,
   .sidebar button {
     padding: 12px;
     font-size: 14px;
+  }
+
+  .header h1 {
+    font-size :2rem;
+    line-height:1.2;
+    word-break:normal;
+    overflow-wrap:break-word;
+    text-align:center;
   }
 
 }
