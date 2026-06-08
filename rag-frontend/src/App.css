@@ -766,22 +766,36 @@ body,
     cursor: pointer;
   }
 
+  @media (max-width: 768px) {
+
   .sidebar {
     position: fixed;
-    left: -320px;
     top: 0;
+    left: -320px;
 
-    width: 300px;
+    width: 280px;
     height: 100vh;
 
     z-index: 1000;
 
-    transition: 0.3s;
+    transition: left 0.3s ease;
+
+    background: #0f172a;
   }
 
   .sidebar-open {
     left: 0;
   }
+
+  .main-content {
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+
+}
+
+  
+  
 
   .close-sidebar {
     display: block;
@@ -793,7 +807,5 @@ body,
     cursor: pointer;
   }
 
-  .main-content {
-    width: 100%;
-  }
+  
 }
