@@ -52,21 +52,40 @@ body {
 ====================== */
 
 .sidebar {
-  width: 350px;
+  width: 320px;
+  max-width: 85vw;
+  height: 100vh;
+
   background: #081028;
   border-right: 1px solid #1e293b;
-  padding: 25px;
+
+  padding: 20px;
+
   overflow-y: auto;
+  overflow-x: hidden;
+
+  display: flex;
+  flex-direction: column;
+
+  scrollbar-width: thin;
 }
 
 .sidebar h2 {
-  font-size: 28px;
-  margin-bottom: 10px;
+  font-size: 26px;
+  margin-bottom: 8px;
+  text-align: center;
 }
 
 .sidebar p {
   color: #94a3b8;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
+}
+
+
+.sidebar-buttons{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
 }
 
 .pdf-panel {
@@ -747,7 +766,7 @@ body,
   }
 
   .stats {
-    display: grid;
+    display: None;
     grid-template-columns: 1fr;
     gap: 10px;
   }
