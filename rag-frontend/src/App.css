@@ -60,8 +60,9 @@ body {
   border-right: 1px solid #1e293b;
 
   padding: 20px;
+  padding-bottom: 150px;
 
-  overflow-y: auto;
+  overflow-y: scroll;
   overflow-x: hidden;
 
   display: flex;
@@ -624,12 +625,14 @@ button:hover {
 .header {
   background: white;
   color: #111827;
+  padding-left:90px;
 }
 
 /* Dark Mode */
 .container.dark .header {
   background: #020617;
   color: white;
+  padding-left:90px;
 }
 
 .header h1 {
@@ -682,13 +685,7 @@ body,
    MOBILE RESPONSIVE
 ========================= */
 
-.mobile-menu-btn {
-  display: none;
-}
 
-.close-sidebar {
-  display: none;
-}
 
 @media (max-width: 768px) {
 
@@ -701,9 +698,9 @@ body,
   .mobile-menu-btn {
     display: block;
     position: fixed;
-    top: 15px;
+    top: 85px;
     left: 15px;
-    z-index: 1002;
+    z-index: 1001;
 
     width: 55px;
     height: 55px;
