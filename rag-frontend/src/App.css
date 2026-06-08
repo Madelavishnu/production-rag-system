@@ -660,63 +660,96 @@ body,
 
 /* ======================
    MOBILE RESPONSIVE
-====================== */
+=================== */
 
-@media screen and (max-width: 768px) {
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+.mobile-menu-btn {
+  display: none;
+}
+
+.close-sidebar {
+  display: none;
+}
+
+@media (max-width: 768px) {
 
   .container {
-    flex-direction: column;
-    height: auto;
+    display: flex;
     width: 100%;
+    height: 100vh;
   }
 
-  /* Hide sidebar on phones */
+  .mobile-menu-btn {
+    display: block;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1002;
+
+    width: 55px;
+    height: 55px;
+
+    border: none;
+    border-radius: 12px;
+
+    font-size: 28px;
+    cursor: pointer;
+  }
+
   .sidebar {
-    display: none;
+    position: fixed;
+
+    top: 0;
+    left: -300px;
+
+    width: 280px;
+    height: 100vh;
+
+    z-index: 1001;
+
+    overflow-y: auto;
+
+    transition: left 0.3s ease;
+  }
+
+  .sidebar-open {
+    left: 0;
+  }
+
+  .sidebar-overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.5);
+
+    z-index: 1000;
+  }
+
+  .close-sidebar {
+    display: block;
+
+    margin-left: auto;
+    margin-bottom: 10px;
+
+    border: none;
+    background: transparent;
+
+    font-size: 24px;
+    cursor: pointer;
   }
 
   .main-content {
     width: 100%;
-  }
-
-  .header {
-    padding: 15px;
-  }
-
-  .header h1 {
-    font-size: 26px;
-  }
-
-  .header p {
-    font-size: 14px;
+    margin-left: 0;
   }
 
   .stats {
+    display: grid;
     grid-template-columns: 1fr;
     gap: 10px;
-    padding: 10px;
-  }
-
-  .stat-card {
-    padding: 15px;
-  }
-
-  .chat-box {
-    padding: 10px;
-    min-height: 60vh;
-  }
-
-  .message {
-    max-width: 95%;
-    font-size: 14px;
-  }
-
-  .welcome-screen {
-    padding: 30px 15px;
-  }
-
-  .welcome-screen h2 {
-    font-size: 24px;
   }
 
   .welcome-features {
@@ -731,89 +764,14 @@ body,
 
   .input-section {
     display: flex;
-    flex-direction: row;
     gap: 8px;
-    padding: 10px;
   }
 
   .input-section input {
     flex: 1;
-    min-width: 0;
   }
 
   .input-section button {
     width: 80px;
-    height: 50px;
-    flex-shrink: 0;
   }
-
-}
-
-@media (max-width: 768px) {
-
-  .mobile-menu-btn {
-    display: block;
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    z-index: 1001;
-
-    border: none;
-    font-size: 24px;
-    padding: 10px;
-
-    border-radius: 10px;
-    cursor: pointer;
-  }
-
-  @media (max-width: 768px) {
-
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: -320px;
-
-    width: 280px;
-    height: 100vh;
-
-    z-index: 1000;
-
-    transition: left 0.3s ease;
-
-    background: #0f172a;
-  }
-
-  .sidebar-open {
-    left: 0;
-  }
-
-  .main-content {
-    width: 100% !important;
-    margin-left: 0 !important;
-  }
-
-}
-
-  .sidebar-overlay {
-  position: fixed;
-  inset: 0;
-
-  background: rgba(0,0,0,0.5);
-
-  z-index: 999;
-}
-  
-  
-
-  .close-sidebar {
-    display: block;
-    margin-left: auto;
-    margin-bottom: 15px;
-
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-  }
-
-  
 }
