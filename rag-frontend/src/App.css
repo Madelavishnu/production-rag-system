@@ -182,12 +182,9 @@ body {
 ====================== */
 
 .stats {
-  display: flex;
-  gap: 15px;
-  padding: 20px;
-  border-bottom: 1px solid #1e293b;
+  display: None;
 }
-
+/* ======================
 .stat-card {
   flex: 1;
   background: #0f172a;
@@ -207,7 +204,7 @@ body {
   font-weight: bold;
 }
 
-/* ======================
+
    CHAT
 ====================== */
 
@@ -793,4 +790,28 @@ body,
   .input-section button {
     width: 80px;
   }
+}
+
+
+@media (max-width: 768px) {
+
+  .sidebar {
+    width: 280px;
+    max-width: 80vw;
+    padding: 16px;
+  }
+
+  .logo-section h1 {
+    font-size: 48px;
+  }
+
+  .logo-section h2 {
+    font-size: 32px;
+  }
+
+  .sidebar button {
+    padding: 12px;
+    font-size: 14px;
+  }
+
 }
