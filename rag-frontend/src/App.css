@@ -480,20 +480,7 @@ button:hover {
 }
 
 
-.sidebar {
-  width: 300px;
-  background: #111827;
-  color: white;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  overflow-y:auto;
-
-  padding: 20px;
-  padding-vottom:250px;
-}
 
 .logo-section {
   text-align: center;
@@ -530,11 +517,7 @@ button:hover {
   width: 100%;
 }
 
-.sidebar-bottom {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+
 
 .theme-btn,
 .export-btn,
@@ -729,6 +712,8 @@ body,
     overflow-y: auto;
 
     transition: left 0.3s ease;
+    padding-bottom:100px;
+    
   }
 
   .sidebar-open {
@@ -762,11 +747,7 @@ body,
     margin-left: 0;
   }
 
-  .stats {
-    display: None;
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
+  
 
   .welcome-features {
     display: flex;
