@@ -803,12 +803,12 @@ body,
     text-align:center;
   }
 
-}
+
 
 
 /* PDF List Container */
 .pdf-list {
-  max-height: 170px; /* about 2-3 PDFs visible */
+  max-height: 150px; /* about 2-3 PDFs visible */
   overflow-y: auto;
 
   display: flex;
@@ -835,13 +835,5 @@ body,
   background: transparent;
 }
 
-
-
-@media (max-width: 768px) {
-
-  .pdf-list {
-    max-height: 220px;
-    overflow-y: auto;
-  }
-
 }
+
