@@ -317,16 +317,13 @@ return (
           📚 Uploaded PDFs
         </h3>
 
-        {pdfs.map((pdf, index) => (
-          <div
-            key={index}
-            className="pdf-card"
-          >
-            <div className="pdf-name">
-              📄 {pdf}
+        <div className="pdf-list">
+          {pdfs.map((pdf, index) => (
+            <div key={index} className="pdf-card">
+              <div className="pdf-name">📄 {pdf}</div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
 
         <div className="upload-section">
 
