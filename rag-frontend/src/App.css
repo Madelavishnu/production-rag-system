@@ -806,11 +806,36 @@ body,
 }
 
 
+/* PDF List Container */
 .pdf-list {
-  max-height: 300px;
+  max-height: 220px; /* about 2-3 PDFs visible */
   overflow-y: auto;
-  margin-bottom: 15px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  margin-bottom: 20px;
+
+  scrollbar-width: thin;
+  scrollbar-color: #4f46e5 transparent;
 }
+
+/* Chrome scrollbar */
+.pdf-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.pdf-list::-webkit-scrollbar-thumb {
+  background: #4f46e5;
+  border-radius: 10px;
+}
+
+.pdf-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
 
 @media (max-width: 768px) {
 
