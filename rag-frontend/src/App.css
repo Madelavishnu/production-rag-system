@@ -808,7 +808,7 @@ body,
 
 /* PDF List Container */
 .pdf-list {
-  max-height: 220px; /* about 2-3 PDFs visible */
+  max-height: 170px; /* about 2-3 PDFs visible */
   overflow-y: auto;
 
   display: flex;
