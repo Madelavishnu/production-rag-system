@@ -45,7 +45,9 @@ body {
   border: 1px solid #374151;
 }
 
-
+.message {
+  max-width: 90%;
+}
 
 /* ======================
    SIDEBAR
@@ -259,19 +261,36 @@ body {
   margin-bottom: 10px;
 }
 
+/* Light Mode Sources */
 .source-box {
-  background: #0f172a;
-  border: 1px solid #334155;
-  padding: 12px;
-  border-radius: 10px;
-  margin-bottom: 10px;
+  background: #ffffff;
+  color: #111827;
+  border: 1px solid #d1d5db;
 }
 
 .source-title {
-  color: #60a5fa;
-  font-weight: bold;
-  margin-bottom: 8px;
+  color: #2563eb;
 }
+
+.source-box p,
+.source-box span,
+.source-box div {
+  color: #111827;
+}
+
+/* Dark Mode Sources */
+.container.dark .source-box {
+  background: #0f172a;
+  color: white;
+  border: 1px solid #334155;
+}
+
+.container.dark .source-box p,
+.container.dark .source-box span,
+.container.dark .source-box div {
+  color: white;
+}
+
 
 /* ======================
    INPUT
@@ -836,4 +855,29 @@ body,
 }
 
 }
+
+
+@media (max-width: 768px) {
+
+  .message {
+    max-width: 95%;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .sources {
+    width: 100%;
+  }
+
+  .source-box {
+    width: 100%;
+    overflow-wrap: break-word;
+  }
+
+}
+
 
