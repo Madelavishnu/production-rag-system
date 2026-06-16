@@ -292,7 +292,7 @@ return (
       <div>
 
         <div className="logo-section">
-          <h1>🤖</h1>
+          
           <h2>RAG Assistant</h2>
         </div>
 
@@ -401,7 +401,7 @@ return (
       </button>
 
       <div className="header">
-        <h1>🚀 Production RAG System</h1>
+        <h1> Production RAG System</h1>
 
         <p>
           Upload PDFs and ask intelligent questions
@@ -440,7 +440,7 @@ return (
           <div className="welcome-screen">
 
             <h2>
-              🤖 Production RAG System
+               Production RAG System
             </h2>
 
             <p>
